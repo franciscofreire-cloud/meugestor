@@ -48,7 +48,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background-dark animate-in slide-in-from-right duration-300">
+    <div className="flex flex-col h-[100dvh] bg-background-dark animate-in slide-in-from-right duration-300 overflow-hidden">
       <header className="flex items-center p-2">
         <button onClick={onBack} className="p-2 rounded-full active:bg-black/5">
           <span className="material-symbols-outlined text-black text-xl">chevron_left</span>
@@ -56,12 +56,12 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
         <h2 className="flex-1 text-center font-black text-base text-black mr-10">Registrar Despesa</h2>
       </header>
 
-      <div className="px-5 py-2 space-y-6 flex-1 pb-6">
-        <section className="flex flex-col items-center justify-center py-4 bg-white rounded-[40px] border border-black/5 shadow-sm">
+      <div className="px-5 py-2 space-y-4 flex-1 overflow-y-auto pb-4">
+        <section className="flex flex-col items-center justify-center py-3 bg-white rounded-[32px] border border-black/5 shadow-sm">
           <p className="text-[10px] font-black text-black/30 mb-1 uppercase tracking-widest">Valor da Despesa</p>
           <button
             onClick={() => setFocusField('amount')}
-            className={`text-5xl font-black tracking-tighter transition-all ${focusField === 'amount' ? 'text-red-600 scale-105' : 'text-black/20'
+            className={`text-4xl font-black tracking-tighter transition-all ${focusField === 'amount' ? 'text-red-600 scale-105' : 'text-black/20'
               }`}
           >
             <span className="text-xl font-bold mr-1 opacity-60">R$</span>
@@ -120,7 +120,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
         </div>
       </div>
 
-      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4 sticky bottom-0 pb-10 sm:pb-4">
+      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-3 pb-16">
         <NumericKeypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
         <button
           onClick={handleSave}

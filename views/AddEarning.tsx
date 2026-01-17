@@ -52,7 +52,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background-dark animate-in slide-in-from-right duration-300">
+    <div className="flex flex-col h-[100dvh] bg-background-dark animate-in slide-in-from-right duration-300 overflow-hidden">
       <header className="flex items-center p-2">
         <button onClick={onBack} className="p-2 rounded-full active:bg-black/5">
           <span className="material-symbols-outlined text-black text-xl font-bold">chevron_left</span>
@@ -60,7 +60,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
         <h2 className="flex-1 text-center font-black text-base text-black mr-10">Registrar Ganhos</h2>
       </header>
 
-      <div className="px-4 flex-1 space-y-4 pb-6">
+      <div className="px-4 flex-1 space-y-3 pb-4 overflow-y-auto">
         <div className="flex justify-between items-center py-2 bg-white/10 p-3 rounded-2xl border border-black/5">
           <span className="text-[10px] font-black text-black/60 uppercase tracking-wider">Data do Ganho</span>
           <div className="relative overflow-hidden">
@@ -84,7 +84,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
           <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 ml-1">PLATAFORMAS</h3>
 
           <div onClick={() => setActiveInput('Uber')} className="space-y-1 cursor-pointer">
-            <div className={`bg-white p-4 rounded-[28px] border-2 transition-all flex items-center justify-between ${activeInput === 'Uber' ? 'border-black ring-4 ring-black/5 scale-[1.02]' : 'border-transparent opacity-60'}`}>
+            <div className={`bg-white p-3 rounded-[24px] border-2 transition-all flex items-center justify-between ${activeInput === 'Uber' ? 'border-black ring-4 ring-black/5 scale-[1.01]' : 'border-transparent opacity-60'}`}>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-xl bg-black flex items-center justify-center">
                   <span className="material-symbols-outlined text-brand">payments</span>
@@ -99,7 +99,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
           </div>
 
           <div onClick={() => setActiveInput('99')} className="space-y-1 cursor-pointer">
-            <div className={`bg-white p-4 rounded-[28px] border-2 transition-all flex items-center justify-between ${activeInput === '99' ? 'border-black ring-4 ring-black/5 scale-[1.02]' : 'border-transparent opacity-60'}`}>
+            <div className={`bg-white p-3 rounded-[24px] border-2 transition-all flex items-center justify-between ${activeInput === '99' ? 'border-black ring-4 ring-black/5 scale-[1.01]' : 'border-transparent opacity-60'}`}>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-xl bg-amber-500 flex items-center justify-center">
                   <span className="material-symbols-outlined text-white">payments</span>
@@ -114,7 +114,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
           </div>
         </section>
 
-        <div className="mt-4 p-5 bg-black rounded-[32px] flex justify-between items-center shadow-lg">
+        <div className="mt-2 p-4 bg-black rounded-[24px] flex justify-between items-center shadow-lg">
           <span className="text-xs font-bold text-brand/60 uppercase">Total do dia</span>
           <p className="text-2xl font-black text-emerald-400">
             R$ {total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
@@ -122,7 +122,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
         </div>
       </div>
 
-      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4 sticky bottom-0 pb-10 sm:pb-4">
+      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-3 pb-16">
         <NumericKeypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
         <button
           onClick={handleSave}
