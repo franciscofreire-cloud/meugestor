@@ -48,7 +48,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background-dark animate-in slide-in-from-right duration-300 overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-background-dark animate-in slide-in-from-right duration-300">
       <header className="flex items-center p-2">
         <button onClick={onBack} className="p-2 rounded-full active:bg-black/5">
           <span className="material-symbols-outlined text-black text-xl">chevron_left</span>
@@ -56,14 +56,13 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
         <h2 className="flex-1 text-center font-black text-base text-black mr-10">Registrar Despesa</h2>
       </header>
 
-      <div className="px-5 py-2 space-y-6 flex-1 overflow-y-auto">
+      <div className="px-5 py-2 space-y-6 flex-1 pb-6">
         <section className="flex flex-col items-center justify-center py-4 bg-white rounded-[40px] border border-black/5 shadow-sm">
           <p className="text-[10px] font-black text-black/30 mb-1 uppercase tracking-widest">Valor da Despesa</p>
-          <button 
+          <button
             onClick={() => setFocusField('amount')}
-            className={`text-5xl font-black tracking-tighter transition-all ${
-              focusField === 'amount' ? 'text-red-600 scale-105' : 'text-black/20'
-            }`}
+            className={`text-5xl font-black tracking-tighter transition-all ${focusField === 'amount' ? 'text-red-600 scale-105' : 'text-black/20'
+              }`}
           >
             <span className="text-xl font-bold mr-1 opacity-60">R$</span>
             {amountString}
@@ -73,7 +72,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
         <section>
           <label className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2 block ml-1">Categoria</label>
           <div className="relative">
-            <select 
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value as ExpenseCategory)}
               className="w-full h-14 bg-white border border-black/5 rounded-2xl px-5 text-sm font-black text-black appearance-none focus:outline-none focus:ring-2 focus:ring-black"
@@ -90,14 +89,14 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
           <section>
             <label className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2 block ml-1">Data</label>
             <div className="relative overflow-hidden">
-              <input 
-                type="date" 
+              <input
+                type="date"
                 ref={dateInputRef}
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 className="absolute inset-0 opacity-0 z-10 cursor-pointer"
               />
-              <button 
+              <button
                 className="w-full h-14 bg-white border border-black/5 rounded-2xl px-4 flex items-center justify-between active:bg-black/5 transition-colors"
               >
                 <span className="text-xs font-black text-black">{formatDateDisplay(selectedDate)}</span>
@@ -107,11 +106,10 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
           </section>
           <section>
             <label className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2 block ml-1">Litros</label>
-            <button 
+            <button
               onClick={() => setFocusField('liters')}
-              className={`w-full h-14 bg-white border rounded-2xl px-4 flex items-center justify-between transition-all ${
-                focusField === 'liters' ? 'border-black ring-2 ring-black/5' : 'border-black/5 opacity-60'
-              }`}
+              className={`w-full h-14 bg-white border rounded-2xl px-4 flex items-center justify-between transition-all ${focusField === 'liters' ? 'border-black ring-2 ring-black/5' : 'border-black/5 opacity-60'
+                }`}
             >
               <span className={`text-sm font-black ${litersString ? 'text-black' : 'text-black/20'}`}>
                 {litersString || '0,00'}
@@ -122,9 +120,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({ onBack, onSave }) => {
         </div>
       </div>
 
-      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4">
+      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4 sticky bottom-0 pb-10 sm:pb-4">
         <NumericKeypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
-        <button 
+        <button
           onClick={handleSave}
           className="w-full bg-black h-14 rounded-2xl text-brand font-black uppercase text-sm tracking-widest active:scale-[0.98] transition-all shadow-xl"
         >

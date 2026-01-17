@@ -45,14 +45,14 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
   const formatDateDisplay = (dateStr: string) => {
     const today = new Date().toISOString().split('T')[0];
     if (dateStr === today) return 'Hoje';
-    
+
     const [year, month, day] = dateStr.split('-');
     const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     return `${day} de ${months[parseInt(month) - 1]}`;
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background-dark animate-in slide-in-from-right duration-300 overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-background-dark animate-in slide-in-from-right duration-300">
       <header className="flex items-center p-2">
         <button onClick={onBack} className="p-2 rounded-full active:bg-black/5">
           <span className="material-symbols-outlined text-black text-xl font-bold">chevron_left</span>
@@ -60,18 +60,18 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
         <h2 className="flex-1 text-center font-black text-base text-black mr-10">Registrar Ganhos</h2>
       </header>
 
-      <div className="px-4 flex-1 overflow-y-auto space-y-4 pb-2">
+      <div className="px-4 flex-1 space-y-4 pb-6">
         <div className="flex justify-between items-center py-2 bg-white/10 p-3 rounded-2xl border border-black/5">
           <span className="text-[10px] font-black text-black/60 uppercase tracking-wider">Data do Ganho</span>
           <div className="relative overflow-hidden">
-            <input 
-              type="date" 
+            <input
+              type="date"
               ref={dateInputRef}
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
               className="absolute inset-0 opacity-0 z-10 cursor-pointer"
             />
-            <button 
+            <button
               className="flex items-center gap-2 bg-black px-3 py-1.5 rounded-xl active:bg-black/80 transition-colors"
             >
               <span className="text-xs font-bold text-brand">{formatDateDisplay(selectedDate)}</span>
@@ -82,7 +82,7 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
 
         <section className="space-y-3">
           <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 ml-1">PLATAFORMAS</h3>
-          
+
           <div onClick={() => setActiveInput('Uber')} className="space-y-1 cursor-pointer">
             <div className={`bg-white p-4 rounded-[28px] border-2 transition-all flex items-center justify-between ${activeInput === 'Uber' ? 'border-black ring-4 ring-black/5 scale-[1.02]' : 'border-transparent opacity-60'}`}>
               <div className="flex items-center gap-3">
@@ -122,9 +122,9 @@ const AddEarning: React.FC<AddEarningProps> = ({ onBack, onSave }) => {
         </div>
       </div>
 
-      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4">
+      <div className="p-4 bg-background-dark/95 backdrop-blur-md border-t border-black/5 space-y-4 sticky bottom-0 pb-10 sm:pb-4">
         <NumericKeypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
-        <button 
+        <button
           onClick={handleSave}
           className="w-full bg-black h-14 rounded-2xl text-brand font-black uppercase text-sm tracking-widest active:scale-[0.98] transition-all shadow-xl"
         >
